@@ -1,0 +1,11 @@
+# authorization code request:
+http://localhost:7000/oauth/oauth/authorize?response_type=code&client_id=gallileo&scope=read&state=O2M9icnsO74LiOZCo0JkreL9oI2_6dHRlTZXGjCn-Zo%3D&redirect_uri=http://localhost:9000/callback
+
+# access_token request:
+curl -X POST --user gallileo:123456 http://localhost:7000/oauth/oauth/token -H "content-type: application/x-www-form-urlencoded" -d "code=zX1C62&state=O2M9icnsO74LiOZCo0JkreL9oI2_6dHRlTZXGjCn-Zo%3D&grant_type=authorization_code&redirect_uri=http://localhost:9000/callback&scope=read" >token
+
+# refresh_token request:
+curl -X POST --user gallileo:123456 http://localhost:7000/oauth/oauth/token -H "content-type: application/x-www-form-urlencoded" -d "grant_type=refresh_token&refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhYWEiLCJzY29wZSI6WyJyZWFkIl0sImF0aSI6ImFkNzM4NmEzLTEzNzgtNGJkMy1iOTQxLTA5NjJiYTU5YTFhZiIsImV4cCI6MTU4Mzk5OTMzMiwiYXV0aG9yaXRpZXMiOlsiVEVTVF9VVV9BVVRIT1JJVFktMiIsIlRFU1RfVVVfQVVUSE9SSVRZLTMiLCJURVNUX0FVVEhPUklUWS1XRUJGUk9OVCJdLCJqdGkiOiJjZGRlNDllNy02MzMzLTRjY2QtOTBmYS00ZmIyNDlhMTlkZDkiLCJjbGllbnRfaWQiOiJnYWxsaWxlbyJ9.-MP2Md_08QCUGsTENM2CM95TmihMxOoFbdIfEK6QXUk&scope=read" >token_refreshing
+
+# resource server request
+curl -X GET http://localhost:6063/test -H "authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhYWEiLCJzY29wZSI6WyJyZWFkIl0sImF0aSI6ImFkNzM4NmEzLTEzNzgtNGJkMy1iOTQxLTA5NjJiYTU5YTFhZiIsImV4cCI6MTU4Mzk5OTMzMiwiYXV0aG9yaXRpZXMiOlsiVEVTVF9VVV9BVVRIT1JJVFktMiIsIlRFU1RfVVVfQVVUSE9SSVRZLTMiLCJURVNUX0FVVEhPUklUWS1XRUJGUk9OVCJdLCJqdGkiOiJjZGRlNDllNy02MzMzLTRjY2QtOTBmYS00ZmIyNDlhMTlkZDkiLCJjbGllbnRfaWQiOiJnYWxsaWxlbyJ9.-MP2Md_08QCUGsTENM2CM95TmihMxOoFbdIfEK6QXUk"

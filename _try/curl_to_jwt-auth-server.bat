@@ -1,0 +1,1 @@
+curl -X POST --user gallileo:123456 http://localhost:7000/oauth/oauth/token -H "content-type: application/x-www-form-urlencoded" -d "code=zX1C62&state=O2M9icnsO74LiOZCo0JkreL9oI2_6dHRlTZXGjCn-Zo%3D&grant_type=authorization_code&redirect_uri=http://localhost:9000/callback&scope=read" >token
